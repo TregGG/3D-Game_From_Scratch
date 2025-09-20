@@ -26,6 +26,10 @@ namespace Cubed {
 
 	void ClientLayer::OnUpdate(float ts)
 	{
+		if (m_Client.GetConnectionStatus() != Walnut::Client::ConnectionStatus::Connected) {
+			return; // No Playability for the client not connected to the server
+		}
+
 		glm::vec2 dir{ 0.0f,0.0f };
 		if (Walnut::Input::IsKeyDown(Walnut::KeyCode::W)) {
 			dir.y = -1;
@@ -54,6 +58,10 @@ namespace Cubed {
 	void ClientLayer::OnUIRender()
 	{
 		ImGui::ShowDemoWindow();
-		DrawRect(m_PlayerPosition, m_PlayerSize, m_PlayerColor);
+
+		if (m_Client.GetConnectionStatus() == Walnut::Client::ConnectionStatus::Connected) {
+			//Allow Client to Play games
+			DrawRect(m_PlayerPosition, m_PlayerSize, m_PlayerColor);
+		}
 	}
 }

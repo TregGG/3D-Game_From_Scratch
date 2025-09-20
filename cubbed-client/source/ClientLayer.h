@@ -1,7 +1,12 @@
 #pragma once
 #include"Walnut/Layer.h"
 #include"Walnut/Application.h"
+#include "Walnut/Networking/Client.h"
+
 #include <glm/glm.hpp>
+
+
+
 namespace Cubed {
 	class ClientLayer : public Walnut::Layer
 	{
@@ -17,9 +22,11 @@ namespace Cubed {
 	private:
 		glm::vec2 m_PlayerPosition{ 00,50 };
 		glm::vec2 m_PlayerVelocity{ 0, 0 };
-		float m_PlayerSpeed = 50.0f;
+		float m_PlayerSpeed = 100.0f;
 		//Player rect size 
-		glm::vec2 m_PlayerSize{ 20 ,20 };
+		glm::vec2 m_PlayerSize{ 50 ,50};
 		uint32_t m_PlayerColor{ 0xff0000ff };
+	
+		Walnut::Client m_Client;
 	};
 } 
