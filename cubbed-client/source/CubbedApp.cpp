@@ -64,7 +64,7 @@
 Walnut::Application* Walnut::CreateApplication(int argc, char** argv)
 {
 	Walnut::ApplicationSpecification spec;
-	spec.Name = "Walnut Example";
+	spec.Name = "Walnut Client";
 	spec.CustomTitlebar = true;
 	spec.UseDockspace = false;
 
