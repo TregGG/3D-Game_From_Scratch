@@ -2,6 +2,7 @@
 #include "ClientLayer.h"
 #include"imgui.h"
 #include"imgui_internal.h"
+#include "misc/cpp/imgui_stdlib.h"
 //temprary draw rect function
 namespace Cubed {
 	static ImVec2 GlmVec2ToImVec2(glm::vec2 v) {
@@ -58,10 +59,21 @@ namespace Cubed {
 	void ClientLayer::OnUIRender()
 	{
 		ImGui::ShowDemoWindow();
-
-		if (m_Client.GetConnectionStatus() == Walnut::Client::ConnectionStatus::Connected) {
+		Walnut::Client::ConnectionStatus connectionStatus = m_Client.GetConnectionStatus();
+		if (connectionStatus == Walnut::Client::ConnectionStatus::Connected) {
 			//Allow Client to Play games
 			DrawRect(m_PlayerPosition, m_PlayerSize, m_PlayerColor);
+		}
+		else {
+			//Connect to server prompt
+			ImGui::Begin("Connect to Server");
+			ImGui::InputText("Enter Server IP",&m_ServerAddress);
+			if (ImGui::Button("Connect")) {
+				m_Client.ConnectToServer(m_ServerAddress);
+			}
+			ImGui::End();
+
+
 		}
 	}
 }

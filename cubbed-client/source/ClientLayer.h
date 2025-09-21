@@ -26,7 +26,12 @@ namespace Cubed {
 		//Player rect size 
 		glm::vec2 m_PlayerSize{ 50 ,50};
 		uint32_t m_PlayerColor{ 0xff0000ff };
-	
+		
+
+		//server-client
 		Walnut::Client m_Client;
+		std::string m_ServerAddress;
+
+		
 	};
 } 
