@@ -14,6 +14,7 @@ project "Cubbed-Client"
 
       "../walnut/vendor/imgui",
       "../walnut/vendor/glfw/include",
+      "../walnut/vendor/spdlog/include",
 
       "../walnut/Walnut/Source",
       "../walnut/Walnut/Platform/GUI",
