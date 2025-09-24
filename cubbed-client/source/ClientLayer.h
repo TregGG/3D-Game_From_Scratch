@@ -19,7 +19,7 @@ namespace Cubed {
 		virtual void OnRender() override;
 		virtual void OnUIRender()override;
 	private:
-		static void OnDataReceived(const Walnut::Buffer buffer);
+		void OnDataReceived(const Walnut::Buffer buffer);
 	private:
 		glm::vec2 m_PlayerPosition{ 00,50 };
 		glm::vec2 m_PlayerVelocity{ 0, 0 };
@@ -27,11 +27,12 @@ namespace Cubed {
 		//Player rect size 
 		glm::vec2 m_PlayerSize{ 50 ,50};
 		uint32_t m_PlayerColor{ 0xff0000ff };
-		uint32_t m_PlayerID;
+		uint32_t m_PlayerID = 0;
 
 		//server-client
 		Walnut::Client m_Client;
 		std::string m_ServerAddress;
 		
 	};
+
 } 
