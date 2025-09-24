@@ -1,6 +1,7 @@
 #include "Walnut/Input/Input.h"
 #include "ClientLayer.h"
 #include"imgui.h"
+#include"Walnut/ImGui/ImGuiTheme.h"
 #include"imgui_internal.h"
 #include "misc/cpp/imgui_stdlib.h"
 //temprary draw rect function
@@ -54,6 +55,7 @@ namespace Cubed {
 
 	void ClientLayer::OnRender()
 	{
+		m_Client.SetDataReceivedCallback([this](const Walnut::Buffer buffer) {OnDataReceived(buffer);});
 	}
 
 	void ClientLayer::OnUIRender()
@@ -65,15 +67,40 @@ namespace Cubed {
 			DrawRect(m_PlayerPosition, m_PlayerSize, m_PlayerColor);
 		}
 		else {
+
+
 			//Connect to server prompt
+
+			bool readOnly = connectionStatus != Walnut::Client::ConnectionStatus::Disconnected;
+
 			ImGui::Begin("Connect to Server");
-			ImGui::InputText("Enter Server IP",&m_ServerAddress);
-			if (ImGui::Button("Connect")) {
-				m_Client.ConnectToServer(m_ServerAddress);
+
+		/*	if (readOnly) {
+				ImGui::PushItemFlag(ImGuiItemFlags_Disabled, true);
+			}*/
+
+			ImGui::InputText("Enter Server IP", &m_ServerAddress);
+			if(connectionStatus==Walnut::Client::ConnectionStatus::FailedToConnect){
+				ImGui::TextColored(ImColor(Walnut::UI::Colors::Theme::invalidPrefab), "Failed to connect. ");
+			} else if (connectionStatus == Walnut::Client::ConnectionStatus::Connecting) {
+				ImGui::TextColored(ImColor(Walnut::UI::Colors::Theme::textDarker), "Connecting..... ");
+
 			}
+			if (ImGui::Button("Connect")) {
+				
+				
+					m_Client.ConnectToServer(m_ServerAddress);
+				
+			}
+			/*if (readOnly) {
+				ImGui::PopItemFlag();
+			}*/
 			ImGui::End();
 
 
 		}
+	}
+	void ClientLayer::OnDataReceived(const Walnut::Buffer buffer)
+	{
 	}
 }

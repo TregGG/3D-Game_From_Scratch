@@ -1,6 +1,16 @@
 ﻿  ClientLayer.cpp
-  CubbedApp.cpp
-  Generating Code...
+D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'source/ClientLayer.cpp')
+      D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1):
+      the template instantiation context (the oldest one first) is
+          D:\code_files\3D-Game_Cherno\walnut\Walnut\Platform\GUI\Walnut\ImGui\ImGuiTheme.h(52,12):
+          see reference to function template instantiation 'float pow<float,float,0>(_Ty1,_Ty2) noexcept' being compiled
+          with
+          [
+              _Ty1=float,
+              _Ty2=float
+          ]
+  
   Cubbed-Client.vcxproj -> D:\code_files\3D-Game_Cherno\bin\Debug-windows-x86_64\Cubbed-Client\Cubbed-Client.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

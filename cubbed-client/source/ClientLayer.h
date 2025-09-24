@@ -18,7 +18,8 @@ namespace Cubed {
 		virtual void OnUpdate(float ts) override;
 		virtual void OnRender() override;
 		virtual void OnUIRender()override;
-
+	private:
+		static void OnDataReceived(const Walnut::Buffer buffer);
 	private:
 		glm::vec2 m_PlayerPosition{ 00,50 };
 		glm::vec2 m_PlayerVelocity{ 0, 0 };
