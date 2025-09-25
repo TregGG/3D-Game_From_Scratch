@@ -1,0 +1,41 @@
+﻿  ApplicationGUI.cpp
+D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Platform/GUI/Walnut/ApplicationGUI.cpp')
+      D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1):
+      the template instantiation context (the oldest one first) is
+          D:\code_files\3D-Game_Cherno\Walnut\Walnut\Platform\GUI\Walnut\ImGui\ImGuiTheme.h(52,12):
+          see reference to function template instantiation 'float pow<float,float,0>(_Ty1,_Ty2) noexcept' being compiled
+          with
+          [
+              _Ty1=float,
+              _Ty2=float
+          ]
+  
+  ImGuiBuild.cpp
+  ImGuiTheme.cpp
+D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Platform/GUI/Walnut/ImGui/ImGuiTheme.cpp')
+      D:\Microsoft VS Code\studio\VC\Tools\MSVC\14.44.35207\include\cmath(865,1):
+      the template instantiation context (the oldest one first) is
+          D:\code_files\3D-Game_Cherno\Walnut\Walnut\Platform\GUI\Walnut\ImGui\ImGuiTheme.h(52,12):
+          see reference to function template instantiation 'float pow<float,float,0>(_Ty1,_Ty2) noexcept' being compiled
+          with
+          [
+              _Ty1=float,
+              _Ty2=float
+          ]
+  
+  Image.cpp
+D:\code_files\3D-Game_Cherno\Walnut\Walnut\Platform\GUI\Walnut\Image.cpp(297,56): warning C4244: 'argument': conversion from 'uint64_t' to 'int', possible loss of data
+  Input.cpp
+  Console.cpp
+  UI.cpp
+  Log.cpp
+  Random.cpp
+  BufferStream.cpp
+  FileStream.cpp
+  StreamReader.cpp
+  StreamWriter.cpp
+  StringUtils.cpp
+  Generating Code...
+  Walnut.vcxproj -> D:\code_files\3D-Game_Cherno\bin\Release-windows-x86_64\Walnut\Walnut.lib

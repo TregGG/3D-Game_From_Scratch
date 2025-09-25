@@ -77,7 +77,7 @@ namespace Cubed {
 
 	void ClientLayer::OnUIRender()
 	{
-		ImGui::ShowDemoWindow();
+		//ImGui::ShowDemoWindow();
 		Walnut::Client::ConnectionStatus connectionStatus = m_Client.GetConnectionStatus();
 		if (connectionStatus == Walnut::Client::ConnectionStatus::Connected) {
 			//Allow Client to Play games
