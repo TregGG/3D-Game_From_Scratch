@@ -67,18 +67,18 @@ namespace Cubed
 		PacketType type;
 		stream.ReadRaw(type);
 		switch (type) {
-		case PacketType::ClientUpdate :
+		case PacketType::ClientUpdate:
 		{
-			
+
 			//WL_INFO_TAG("Server", "{}, {} - {}, {} ", pos.x, pos.y, vel.x, vel.y);
 			m_PlayerDataMutex.lock();
-
+			{
 			PlayerData& playerData = m_PlayerData[clientInfo.ID];
-
+			
 			stream.ReadRaw<glm::vec2>(playerData.Position);
 			stream.ReadRaw<glm::vec2>(playerData.Velocity);
 
-
+			}
 			m_PlayerDataMutex.unlock();
 			break;
 		}
