@@ -69,10 +69,17 @@ namespace Cubed
 		switch (type) {
 		case PacketType::ClientUpdate :
 		{
-			glm::vec2 pos, vel;
-			stream.ReadRaw<glm::vec2>(pos);
-			stream.ReadRaw<glm::vec2>(vel);
+			
 			//WL_INFO_TAG("Server", "{}, {} - {}, {} ", pos.x, pos.y, vel.x, vel.y);
+			m_PlayerDataMutex.lock();
+
+			PlayerData& playerData = m_PlayerData[clientInfo.ID];
+
+			stream.ReadRaw<glm::vec2>(playerData.Position);
+			stream.ReadRaw<glm::vec2>(playerData.Velocity);
+
+
+			m_PlayerDataMutex.unlock();
 			break;
 		}
 		}
