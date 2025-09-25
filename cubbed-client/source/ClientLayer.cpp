@@ -64,6 +64,8 @@ namespace Cubed {
 		stream.WriteRaw<glm::vec2>(m_PlayerVelocity);
 		m_Client.SendBuffer(stream.GetBuffer());
 
+
+		
 	}
 
 	void ClientLayer::OnRender()
@@ -80,6 +82,20 @@ namespace Cubed {
 		if (connectionStatus == Walnut::Client::ConnectionStatus::Connected) {
 			//Allow Client to Play games
 			DrawRect(m_PlayerPosition, m_PlayerSize, m_PlayerColor);
+			
+			m_PlayerDataMutex.lock();
+
+			std::map<uint32_t, PlayerData> playerData = m_PlayerData;
+
+			m_PlayerDataMutex.unlock();
+
+			for (const auto& [id, data] : playerData) {
+				if (id == m_PlayerID)
+					continue;
+				DrawRect(data.Position, m_PlayerSize, 0xff00ff00);
+
+			}
+		
 		}
 		else {
 
@@ -132,6 +148,9 @@ namespace Cubed {
 			break;
 		case PacketType::ClientUpdate:
 			//list of other Clients
+			m_PlayerDataMutex.lock();
+			stream.ReadMap(m_PlayerData);
+			m_PlayerDataMutex.unlock();
 			break;
 		}
 	}

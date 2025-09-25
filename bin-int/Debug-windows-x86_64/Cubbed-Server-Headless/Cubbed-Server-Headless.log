@@ -1,4 +1,6 @@
-﻿  ServerLayer.cpp
+﻿  CubbedApp.cpp
+  ServerLayer.cpp
+  Generating Code...
   Cubbed-Server-Headless.vcxproj -> D:\code_files\3D-Game_Cherno\bin\Debug-windows-x86_64\Cubbed-Server-Headless\Cubbed-Server-Headless.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

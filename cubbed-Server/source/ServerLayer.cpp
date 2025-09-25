@@ -28,6 +28,16 @@ namespace Cubed
 
 	void Cubed::ServerLayer::OnUpdate(float ts)
 	{
+		Walnut::BufferStreamWriter stream(s_ScratchBuffer);
+		stream.WriteRaw(PacketType::ClientUpdate);
+		m_PlayerDataMutex.lock();
+		{
+			stream.WriteMap(m_PlayerData);
+		}
+		m_PlayerDataMutex.unlock();
+
+		m_Server.SendBufferToAllClients(stream.GetBuffer());
+
 		using namespace std::chrono_literals;
 		std::this_thread::sleep_for(5ms);
 	}
@@ -71,7 +81,9 @@ namespace Cubed
 		{
 
 			//WL_INFO_TAG("Server", "{}, {} - {}, {} ", pos.x, pos.y, vel.x, vel.y);
-			m_PlayerDataMutex.lock();
+			
+			//Ideally we want to lock for the least time as possible as other threads also trying to lock the same will be waiting and we want minimal idealing time !!!
+			m_PlayerDataMutex.lock(); 
 			{
 			PlayerData& playerData = m_PlayerData[clientInfo.ID];
 			

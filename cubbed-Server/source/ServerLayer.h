@@ -31,7 +31,6 @@ namespace Cubed {
 
 		};
 		std::mutex m_PlayerDataMutex;
-
 		std::map<uint32_t, PlayerData> m_PlayerData;
 
 	};
